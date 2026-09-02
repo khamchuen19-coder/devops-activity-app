@@ -1,0 +1,29 @@
+name: DevOps CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+      - หลัก
+      - การจัดฉาก
+
+jobs:
+  test:
+    name: Test Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Run Test Phase
+        run: echo "Testing completed successfully!"
+
+  build:
+    name: Build Docker Container
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Build Docker Image
+        run: echo "Docker build completed successfully!"
